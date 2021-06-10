@@ -1,2 +1,2 @@
-# gstore web service
+# GStore web service
 Endpoints for Gstore
