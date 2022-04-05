@@ -1,6 +1,11 @@
 pipeline {
 
     agent any
+    
+    tools {
+        maven 'DevOpsMaven'
+    }
+
     stages {
 
         stage('Checkout Codebase'){
@@ -21,9 +26,8 @@ pipeline {
 
         stage('Build'){
             steps{
-                withMaven(maven: 'mvn') {
-                    sh "mvn clean package"
-                }
+                sh "mvn clean package"
+                
             }
         }
 
