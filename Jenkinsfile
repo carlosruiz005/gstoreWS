@@ -26,21 +26,20 @@ pipeline {
 
         stage('Build'){
             steps{
-                sh "mvn clean package"
+                sh "mvn clean test package"
                 
             }
         }
 
         stage('Test'){
             steps{
-                sh 'cd src/ ; java -jar ../lib/junit-platform-console-standalone-1.7.0-all.jar -cp "." --select-class GstoreApplicationTests --reports-dir="reports"'
-                junit 'src/reports/*-jupiter.xml'
+                sh "mvn test"
             }
         }
 
         stage('Deploy'){
             steps{
-                sh 'cd src/ ; java App' 
+                sh 'mvn install' 
             }
         }
     }
