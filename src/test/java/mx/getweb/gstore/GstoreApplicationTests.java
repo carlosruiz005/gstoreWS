@@ -32,7 +32,7 @@ class GstoreApplicationTests {
                     .perform(get("/ventas/alive"))
                     .andExpect(status().isOk())
                     .andExpect(content().contentType("application/json"))
-                    .andExpect(jsonPath("$.valor").value("alivee"));
+                    .andExpect(jsonPath("$.valor").value("alive"));
         } catch (Exception e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
