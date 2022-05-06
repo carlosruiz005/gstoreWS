@@ -39,7 +39,7 @@ pipeline {
 
         stage('SonarQube'){
             steps{
-                sh "mvn test"
+                echo "Sonar"
             }
         }
 
