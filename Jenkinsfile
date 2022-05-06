@@ -8,7 +8,7 @@ pipeline {
 
     stages {
 
-        stage('Checkout Codebase'){
+        stage('Checkout git'){
             steps{
                 cleanWs()
                 checkout(
@@ -24,14 +24,20 @@ pipeline {
             }
         }
 
+        stage('Pruebas unitarias'){
+            steps{
+                sh "mvn -Dmaven.test.skip=false -U clean test"
+            }
+        }
+
         stage('Build'){
             steps{
-                sh "mvn clean test package"
+                sh "mvn clean package"
                 
             }
         }
 
-        stage('Test'){
+        stage('SonarQube'){
             steps{
                 sh "mvn test"
             }
