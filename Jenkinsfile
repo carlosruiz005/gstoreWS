@@ -45,7 +45,7 @@ pipeline {
 
         stage('Crear imagen'){
             echo "Creando la imagen docker... "
-            dir('gstoreWS'){
+            steps{
                 sh './mvnw spring-boot:build-image'
             }
         }
