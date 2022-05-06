@@ -44,7 +44,6 @@ pipeline {
         }
 
         stage('Crear imagen'){
-            echo "Creando la imagen docker... "
             steps{
                 sh './mvnw spring-boot:build-image'
             }
