@@ -6,6 +6,10 @@ pipeline {
         maven 'DevOpsMaven'
     }
 
+    environment {
+        DOCKERHUB_CREDENTIALS=credentials('MyDockerHub')
+    }
+
     stages {
 
         stage('Checkout git'){
@@ -46,6 +50,18 @@ pipeline {
         stage('Crear imagen'){
             steps{
                 sh 'docker build -t springio/gs-spring-boot-docker .'
+            }
+        }
+
+        stage('Login to DockerHub') {
+            steps {
+                sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'
+            }
+        }
+
+        stage('Push') {
+            steps {
+                sh 'docker push springio/gs-spring-boot-docker'
             }
         }
     }
