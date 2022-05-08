@@ -61,7 +61,7 @@ pipeline {
 
         stage('Push') {
             steps {
-                sh 'docker push springio/gs-spring-boot-docker'
+                sh 'docker push carlosruizcrr6/gstore'
             }
         }
     }
