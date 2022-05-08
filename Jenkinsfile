@@ -45,7 +45,7 @@ pipeline {
 
         stage('Crear imagen'){
             steps{
-                sh './mvnw spring-boot:build-image'
+                sh 'docker build -t springio/gs-spring-boot-docker .'
             }
         }
     }
